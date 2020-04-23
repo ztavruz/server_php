@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/gabordemooij/redbean.git",
-                "reference": "e026b2d9e6fc1bda436290e740786a961cf97a62"
+                "reference": "9a6961a6abbd4f96e14e68e8b55de702ce16c623"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gabordemooij/redbean/zipball/e026b2d9e6fc1bda436290e740786a961cf97a62",
-                "reference": "e026b2d9e6fc1bda436290e740786a961cf97a62",
+                "url": "https://api.github.com/repos/gabordemooij/redbean/zipball/9a6961a6abbd4f96e14e68e8b55de702ce16c623",
+                "reference": "9a6961a6abbd4f96e14e68e8b55de702ce16c623",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
             "keywords": [
                 "orm"
             ],
-            "time": "2020-04-05T20:15:42+00:00"
+            "time": "2020-04-22T15:55:58+00:00"
         }
     ],
     "packages-dev": [],

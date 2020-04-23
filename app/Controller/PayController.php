@@ -66,7 +66,10 @@ class PayController
         if($sign != $dataSet['ik_sign']){
             $response = [];
             $response['error'] = "Ошибка обработки платежа!";
+
+            file_put_contents("./tested11111111.php", json_encode($response));
             echo json_encode($response);
+
         }
 
 

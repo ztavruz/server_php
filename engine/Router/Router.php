@@ -12,9 +12,9 @@ class Router
     public function add($url, $controller, $method, $level_access = "A")
     {
         $this->routes[$url] = [
-            '_controller' => $controller,
-            '_method' => $method,
-            '_access' => $level_access
+            'controller' => $controller,
+            'method' => $method,
+            'access' => $level_access
         ];
 
         $this->accessLevel[] = $level_access;

@@ -42,13 +42,14 @@ class PayRepository
             $table = R::dispense($preparePayTable);
             $table->user_id = $pay->getUserId();
             $table->time_point_prepare = time();
-            $table->sum = 0;
+            $table->sum = $pay->getSum();
             R::store($table);
 
             $bean = $this->findOneBy($preparePayTable, "user_id", $pay->getUserId());
 
             $pay = [
                 "userId" => $bean["user_id"],
+                "sum" => $bean["sum"],
                 "timePoint" => $bean["time_point_prepare"]
             ];
             return $pay;
@@ -61,7 +62,7 @@ class PayRepository
                 "userId" => $bean["user_id"],
                 "timePoint" => $bean["time_point_prepare"],
                 "prepareExist" => true,
-                "sum" => $pay->getSum()
+                "sum" => $bean['sum']
             ];
             return $pay;
 

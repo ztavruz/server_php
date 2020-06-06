@@ -20,12 +20,15 @@ class PayController
 
     public function __construct(PayService $payService)
     {
+
+        file_put_contents("./test.txt", $_POST);
+
         $this->payService = $payService;
         $this->logger = new Logger(false);
 
         if (isset($_POST["pay"])) {
             $this->arrayPost = json_decode($_POST["pay"], true);
-        } elseif (isset($_POST['amount']) && isset($_POST['label'])) {
+        } elseif (isset($_POST['ik_pm_no']) && isset($_POST['ik_am'])) {
             $this->arrayPost = $_POST;
         } else {
             $this->logger->flyLog("В массиве POST отсутствуют ТРЕБУЕММЫЕ данные. Возможно запущен режим отладки");
@@ -67,7 +70,7 @@ class PayController
             $response = [];
             $response['error'] = "Ошибка обработки платежа!";
 
-            file_put_contents("./tested11111111.php", json_encode($response));
+
             echo json_encode($response);
 
         }
@@ -80,6 +83,13 @@ class PayController
         //        Подтверждение платежа: - ответ сервера (YES)
 
 
+    }
+
+    public function testPay()
+    {
+//        var_dump("dadads");
+        $file = file_get_contents("./test.php");
+        var_dump($file);
     }
 
 
@@ -131,8 +141,8 @@ class PayController
             $dto->amount = intval($this->arrayPost["withdraw_amount"]);
             $dto->label = $this->arrayPost["label"];
         }
-//        var_dump("Данные отправлены в сервис на обработку..."); echo "<br/>";
-        $this->logger->flyLog("Данные отправлены в сервис на обработку...");
+
+//        $this->logger->flyLog("Данные отправлены в сервис на обработку...");
         $confirm = $this->payService->confirm($dto);
     }
 

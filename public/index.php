@@ -48,17 +48,20 @@ $router->add("/task/create",        TaskController::class,  "create");
 $router->add("/task/list",          TaskController::class,  "list");
 
 $router->add("/api/payRegister",    PayController::class,   "create");
-$router->add("/api/payConfirm",     PayController::class,   "confirmINTERKASSA");
-//$router->add("/api/payConfirm",     PayController::class,   "confirmYANDEX");
+//$router->add("/api/payConfirm",       PayController::class,   "confirmINTERKASSA");
+//$router->add("/api/testPay",          PayController::class,   "testPay");
+$router->add("/api/payConfirm",     PayController::class,   "confirmYANDEX");
 $router->add("/api/payMessage",     PayController::class,   "message");
 
 
 $router->add("/api/admin/getAllUsers", AdminController::class,   "getAllUsers");
 
 
-$router->add("/tester/jwtencode",   Tester::class,          "jwtencode");
-$router->add("/tester/jwtdecode",   Tester::class,          "jwtdecode");
-$router->add("/tester/jwtverify",   Tester::class,          "jwtverify");
+$router->add("/api/tester/jwtencode",    Tester::class,          "jwtencode");
+$router->add("/api/tester/jwtdecode",    Tester::class,          "jwtdecode");
+$router->add("/api/tester/jwtverify",    Tester::class,          "jwtverify");
+$router->add("/api/tester/question16",   Tester::class,          "question16");
+$router->add("/api/tester/task17",       Tester::class,          "task17");
 
 $container = new Container();
 
@@ -148,7 +151,7 @@ $match = $router->match($rout);
 //var_dump($rout);
 //var_dump($match["_method"]);
 
-$controller = $container->get($match["_controller"]);
-$method = $match['_method'];
+$controller = $container->get($match["controller"]);
+$method = $match['method'];
 
 $response = $controller->$method();

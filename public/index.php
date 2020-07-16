@@ -1,8 +1,8 @@
 <?php
 
+header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Credentials: true");
-//header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -144,8 +144,9 @@ $container->set(Tester::class, function(Container $container){
     return new Tester();
 });
 
-
-$rout = $_SERVER["REDIRECT_URL"];
+//var_dump($_SERVER);
+//var_dump($_SERVER["REDIRECT_URL"]);
+$rout = $_SERVER["REQUEST_URI"];
 $match = $router->match($rout);
 
 //var_dump($rout);
